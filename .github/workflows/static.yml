@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aupetit Gatô – Onde o charme encontra o cuidado</title>
+  <style>
+    /* Reset e tipografia básica */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Georgia', serif;
+      color: #333;
+      background-color: #f9f6f2;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a { text-decoration:none; color: inherit; }
+    img { max-width:100%; display:block; }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    header .container {
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 { font-size:1.8rem; color:#b47461; }
+    nav ul { list-style:none; display:flex; gap:1.5rem; }
+    nav a { font-size:1rem; color:#555; padding:0.25rem; }
+    nav a:hover { color:#b47461; }
+
+    section {
+      padding:6rem 1rem 4rem; /* top padding permite o header fixo */
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    /* Produtos */
+    .prod-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+      gap:2rem;
+    }
+    .prod-card {
+      background:#fff;
+      padding:1rem;
+      border-radius:8px;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+      text-align:center;
+      opacity:0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+    .prod-card:nth-child(1) { animation-delay:0.2s; }
+    .prod-card:nth-child(2) { animation-delay:0.4s; }
+    .prod-card:nth-child(3) { animation-delay:0.6s; }
+    .prod-card img {
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      height: 180px;
+      object-fit: cover;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .prod-card h3 {
+      margin:0.8rem 0; font-size:1.3rem; color:#b47461;
+    }
+    .prod-card p {
+      font-size:0.95rem; color:#666; margin-bottom:1rem;
+    }
+    .prod-card button {
+      background:#b47461;
+      color:#fff;
+      border:none;
+      padding:0.75rem 1.5rem;
+      border-radius:5px;
+      cursor:pointer;
+      font-size:1rem;
+      transition: background .3s, transform .2s;
+    }
+    .prod-card button:hover {
+      background:#a36353;
+      transform: translateY(-2px);
+    }
+
+    /* Formulário Kit */
+    form label { display:block; margin-bottom:0.5rem; font-weight:bold; }
+    form input, form textarea {
+      width:100%;
+      padding:0.75rem;
+      border:1px solid #ccc;
+      border-radius:5px;
+      margin-bottom:1rem;
+      font-family:inherit;
+    }
+    form button { background:#b47461; color:#fff; border:none;
+      padding:0.75rem 1.5rem; border-radius:5px;
+      font-size:1rem; cursor:pointer;
+      transition: background .3s;
+    }
+    form button:hover { background:#a36353; }
+
+    /* Footer */
+    footer {
+      text-align:center;
+      padding:2rem 1rem;
+      background:#fff;
+      font-size:0.9rem;
+      margin-top:2rem;
+      color:#555;
+    }
+    footer a { margin:0 0.5rem; color:#b47461; transition: color .3s; }
+    footer a:hover { color:#a36353; }
+
+    /* Ícones sociais */
+    .social-icons svg {
+      width:24px;
+      height:24px;
+      vertical-align:middle;
+      fill:#b47461;
+      transition: fill .3s;
+    }
+    .social-icons a:hover svg { fill:#a36353; }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER FIXO -->
+  <header>
+    <div class="container">
+      <h1>Aupetit Gatô</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#kit">Kit Personalizado</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <section id="home">
+    <h2>Bem-vindo à Aupetit Gatô</h2>
+    <p>Descubra produtos pet com charme francês, feitos sob encomenda para cuidar do seu pet com estilo.</p>
+  </section>
+
+  <!-- PRODUTOS -->
+  <section id="produtos">
+    <h2>Nosso Catálogo</h2>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <img src="https://via.placeholder.com/300x180.png?text=Shampoo+Premium" alt="Cuidado Diário">
+        <h3>Cuidado Diário</h3>
+        <p>Shampoo, escovas e petiscos naturais Premium.</p>
+        <button onclick="window.open('https://www.mercadopago.com/?fake_link_1','_blank')">
+          Comprar (Mercado Pago)
+        </button>
+      </div>
+      <div class="prod-card">
+        <img src="https://via.placeholder.com/300x180.png?text=Acessórios+Chic" alt="Acessórios Elegantes">
+        <h3>Acessórios Elegantes</h3>
+        <p>Coleiras, guias e plaquinhas em estilo clean.</p>
+        <button onclick="window.open('https://www.mercadopago.com/?fake_link_2','_blank')">
+          Comprar (Mercado Pago)
+        </button>
+      </div>
+      <div class="prod-card">
+        <img src="https://via.placeholder.com/300x180.png?text=Kit+Personalizado" alt="Kit Personalizado">
+        <h3>Kits Personalizados</h3>
+        <p>Coleira + guia + plaquinha com nome e telefone.</p>
+        <button onclick="window.open('https://www.mercadopago.com/?fake_link_3','_blank')">
+          Personalizar & comprar
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- KIT PERSONALIZADO -->
+  <section id="kit">
+    <h2>Kit Personalizado</h2>
+    <p>Monte um kit exclusivo com nome e telefone do seu pet na plaquinha.</p>
+    <form id="formulario-kit">
+      <label for="nome">Nome do Pet:</label>
+      <input type="text" id="nome" name="nome" placeholder="Ex: Bilu" required />
+
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" placeholder="(XX) 9XXXX‑XXXX" required />
+
+      <label for="observacoes">Observações (cor do kit, estilo, etc.):</label>
+      <textarea id="observacoes" name="observacoes" rows="3" placeholder="Desejo coleira azul e plaquinha dourada"></textarea>
+
+      <button type="submit">Enviar pedido ao fornecedor</button>
+    </form>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <h2>Sobre a Aupetit Gatô</h2>
+    <p>A Aupetit Gatô nasceu da paixão por oferecer produtos pet com elegância e atenção ao detalhe. Trabalhamos com fornecedores parceiros para entregar produtos white‑label de alta qualidade, com forte identidade visual e foco na experiência afetiva.</p>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>📞 WhatsApp: 
+      <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%20Aupetit%20Gat%C3%B4!">
+        Clique para conversar
+      </a>
+    </p>
+    <p>📷 Instagram:
+      <span class="social-icons">
+        <a href="https://instagram.com/seu_instagram" target="_blank" title="Instagram">
+          <!-- ícone Instagram SVG -->
+          <svg viewBox="0 0 24 24">
+            <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8.75 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4.5 1.5A5.25 5.25 0 1 1 7.75 12a5.25 5.25 0 0 1 4.25-4.25zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5z"/>
+          </svg>
+          @seu_instagram
+        </a>
+      </span>
+    </p>
+    <p>✉️ E‑mail: <a href="mailto:contato@aupetitgato.com.br">contato@aupetitgato.com.br</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Aupetit Gatô. Todos os direitos reservados.</p>
+    <p>
+      <a href="#home">Top</a> |
+      <a href="#contato">Contato</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('formulario-kit').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nome = this.nome.value.trim();
+      const telefone = this.telefone.value.trim();
+      const obs = this.observacoes.value.trim();
+      alert(
+        `Pedido enviado!\n\nNome do pet: ${nome}\nTelefone: ${telefone}\nObservações: ${obs}\n\nVamos encaminhar ao fornecedor parceiro. Obrigado!`
+      );
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
