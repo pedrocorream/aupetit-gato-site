@@ -1,26 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Aupetit Gatô</title>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Aupetit Gatô – Boutique Pet Charm</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Georgia, serif; margin: 0; background: #f9f6f2; color: #333; }
-    header { position: fixed; width: 100%; background: #fff; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    nav { display: flex; justify-content: center; gap: 1.5rem; padding: 1rem; }
-    nav a { text-decoration: none; color: #555; font-weight: bold; cursor: pointer; }
-    nav a:hover { color: #b47461; }
-    section { display: none; padding: 6rem 1rem 3rem; max-width: 900px; margin: auto; }
-    section.active { display: block; }
-    .prod-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
-    .prod-card { background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
-    .prod-card img { height: 180px; object-fit: cover; width: 100%; border-radius: 6px; }
-    button { background: #b47461; color: #fff; padding: 0.75rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; margin-top: 0.5rem; }
-    button:hover { background: #a36353; }
-    form input, form textarea { width: 100%; padding: 0.75rem; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 1rem; font-family: inherit; }
-    footer { text-align: center; padding: 2rem 1rem; font-size: 0.9rem; background: #fff; color: #555; margin-top: 2rem; }
-    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-    th, td { padding: 0.75rem; border-bottom: 1px solid #ddd; text-align: left; }
+    /* Global & Typography */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:Lato, sans-serif; color:#444; background:#faf8f6; scroll-behavior:smooth;}
+    h1,h2,h3{font-family:'Playfair Display', serif; color:#b47563; margin-bottom:0.5rem;}
+    p, label{font-family:Lato,sans-serif; color:#555;}
+    button{cursor:pointer;}
+    /* Header */
+    header{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.95);box-shadow:0 2px 5px rgba(0,0,0,0.1);z-index:1000;}
+    nav{display:flex;justify-content:center;gap:2rem;padding:1rem;}
+    nav a{color:#555;text-decoration:none;font-weight:600;transition:color .3s;}
+    nav a:hover{color:#b47563;}
+    /* Sections container */
+    section{display:none;padding:100px 1rem 2rem;max-width:900px;margin:auto;}
+    section.active{display:block;}
+
+/* Home banner */
+    #home .banner{position:relative; height:85vh; background:url('https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1600&q=80')center/cover no-repeat;}
+    #home .banner::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);}
+    #home .hero{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:#fff;padding:1rem;}
+    #home button{background:#fff;color:#b47563;border:none;padding:0.75rem 1.5rem;border-radius:5px;font-weight:600;transition:background .3s;}
+    #home button:hover{background:#f0e8e3;}
+
+/* Produto grid */
+    .prod-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px,1fr));gap:2rem;}
+    .prod-card{background:#fff;padding:1rem;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);opacity:0;transform:translateY(20px);animation:fadeInUp .7s forwards;}
+    .prod-card:nth-child(1){animation-delay:0.2s;}
+    .prod-card:nth-child(2){animation-delay:0.4s;}
+    .prod-card:nth-child(3){animation-delay:0.6s;}
+    .prod-card img{width:100%;height:180px;object-fit:cover;border-radius:6px;}
+    .prod-card h3{margin:0.8rem 0 0.4rem;}
+    .prod-card p{font-size:0.95rem;margin-bottom:0.8rem;}
+    @keyframes fadeInUp{to{opacity:1;transform:translateY(0);}}
+
+/* Formulário kit */
+    form{background:#fff;padding:1.5rem;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);max-width:600px;margin:0 auto;}
+    form label{display:block;margin-bottom:0.3rem;font-weight:600;}
+    form input, form textarea{width:100%;padding:0.75rem;border:1px solid #ccc;border-radius:5px;margin-bottom:1rem;}
+    form button{background:#b47563;color:#fff;border:none;padding:0.75rem 1.5rem;border-radius:5px;font-weight:600;transition:background .3s;}
+    form button:hover{background:#a36353;}
+
+/* Carrinho tabela */
+    table{width:100%;border-collapse:collapse;margin-top:1rem;}
+    th,td{padding:0.75rem;border-bottom:1px solid #ddd;text-align:left;}
+    tfoot td{font-weight:700;}
+    .remove-btn{background:#e74c3c;color:#fff;border:none;padding:0.3rem 0.6rem;border-radius:3px;font-size:0.9rem;cursor:pointer;transition:background .3s;}
+    .remove-btn:hover{background:#c0392b;}
   </style>
 </head>
 <body>
@@ -35,9 +65,14 @@
 </header>
 
 <section id="home" class="active">
-  <h1>Aupetit Gatô</h1>
-  <p>“Onde o charme encontra o cuidado.”</p>
-  <p>Produtos pet com estética premium e feitos sob encomenda.</p>
+  <div class="banner">
+    <div class="hero">
+      <h1>Aupetit Gatô</h1>
+      <p>“Onde o charme encontra o cuidado.”</p>
+      <p>Uma boutique online que une estilo francês ao bem-estar do seu pet.</p>
+      <button onclick="showSection('produtos')">Ver Produtos</button>
+    </div>
+  </div>
 </section>
 
 <section id="produtos">
@@ -45,17 +80,17 @@
   <div class="prod-grid">
     <div class="prod-card">
       <img src="https://via.placeholder.com/300x180.png?text=Shampoo+Premium" alt="Shampoo">
-      <h3>Shampoo Premium</h3><p>R$39,90</p>
+      <h3>Shampoo Premium</h3><p>R$39,90 – cuidado e delicadeza diária.</p>
       <button onclick="addToCart('Shampoo Premium', 39.90)">Adicionar ao Carrinho</button>
     </div>
     <div class="prod-card">
       <img src="https://via.placeholder.com/300x180.png?text=Acessório+Chic" alt="Acessório">
-      <h3>Acessório Chic</h3><p>R$59,90</p>
+      <h3>Acessório Chic</h3><p>Coleira elegante com plaquinha estilosa – R$59,90.</p>
       <button onclick="addToCart('Acessório Chic', 59.90)">Adicionar ao Carrinho</button>
     </div>
     <div class="prod-card">
       <img src="https://via.placeholder.com/300x180.png?text=Kit+Personalizado" alt="Kit">
-      <h3>Kit Personalizado</h3><p>R$149,00</p>
+      <h3>Kit Personalizado</h3><p>Coleira + guia + plaquinha com nome – R$149,00.</p>
       <button onclick="addToCart('Kit Personalizado', 149.00)">Adicionar ao Carrinho</button>
     </div>
   </div>
@@ -64,9 +99,12 @@
 <section id="kit">
   <h2>Kit Personalizado</h2>
   <form id="kitForm">
-    <label>Nome do Pet:<input type="text" id="nome" required></label>
-    <label>Telefone:<input type="tel" id="tel" required></label>
-    <label>Observações:<textarea id="obs"></textarea></label>
+    <label for="nome">Nome do Pet:</label>
+    <input type="text" id="nome" placeholder="Ex: Bilu" required>
+    <label for="tel">Telefone:</label>
+    <input type="tel" id="tel" placeholder="(XX) 9XXXX‑XXXX" required>
+    <label for="obs">Observações adicionais:</label>
+    <textarea id="obs" placeholder="cor da coleira, estilo..."></textarea>
     <button type="submit">Adicionar Kit ao Carrinho</button>
   </form>
 </section>
@@ -74,9 +112,9 @@
 <section id="carrinho">
   <h2>Seu Carrinho</h2>
   <table>
-    <thead><tr><th>Item</th><th>Qtd</th><th>Preço</th><th>Subtotal</th></tr></thead>
+    <thead><tr><th>Item</th><th>Qtd</th><th>Preço</th><th>Subtotal</th><th>Ações</th></tr></thead>
     <tbody id="cartBody"></tbody>
-    <tfoot><tr><td colspan="3">Total:</td><td id="total">R$0,00</td></tr></tfoot>
+    <tfoot><tr><td colspan="3">Total:</td><td id="total">R$0,00</td><td></td></tr></tfoot>
   </table>
   <button onclick="finalizarCompra()">Finalizar Compra</button>
 </section>
@@ -85,50 +123,51 @@
 
 <script>
 function showSection(id) {
-  document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  if (id === 'carrinho') renderCarrinho();
+  if(id==='carrinho') renderCarrinho();
 }
-
 function addToCart(name, price) {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
-  carrinho.push({ name, price, qty: 1 });
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  const cart = JSON.parse(localStorage.getItem('carrinho')||'[]');
+  const existing = cart.find(i=>i.name===name);
+  if(existing) existing.qty++;
+  else cart.push({name,price,qty:1});
+  localStorage.setItem('carrinho',JSON.stringify(cart));
   alert(`${name} adicionado ao carrinho!`);
 }
-
-document.getElementById('kitForm').addEventListener('submit', e => {
+document.getElementById('kitForm').addEventListener('submit', e=>{
   e.preventDefault();
-  const nome = document.getElementById('nome').value;
-  const tel = document.getElementById('tel').value;
-  const obs = document.getElementById('obs').value;
-  const carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
-  carrinho.push({ name: `Kit: ${nome}`, price: 149.00, qty: 1, tel, obs });
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  alert('Kit personalizado adicionado ao carrinho!');
+  const n=document.getElementById('nome').value;
+  const t=document.getElementById('tel').value;
+  const o=document.getElementById('obs').value;
+  const cart = JSON.parse(localStorage.getItem('carrinho')||'[]');
+  cart.push({name:`Kit: ${n}`,price:149.00,qty:1,tel:t,obs:o});
+  localStorage.setItem('carrinho',JSON.stringify(cart));
+  alert('Kit personalizado adicionado!');
   e.target.reset();
 });
-
 function renderCarrinho() {
-  const carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
-  const tbody = document.getElementById('cartBody');
-  tbody.innerHTML = '';
-  let total = 0;
-  carrinho.forEach(item => {
-    const sub = item.price * item.qty;
-    total += sub;
-    tbody.innerHTML += `<tr><td>${item.name}</td><td>${item.qty}</td><td>R$${item.price.toFixed(2)}</td><td>R$${sub.toFixed(2)}</td></tr>`;
+  const cart=JSON.parse(localStorage.getItem('carrinho')||'[]');
+  const tbody=document.getElementById('cartBody'); tbody.innerHTML='';
+  let total=0;
+  cart.forEach((i,idx)=>{
+    const sub=i.price*i.qty; total+=sub;
+    const row=document.createElement('tr');
+    row.innerHTML=`<td>${i.name}</td><td>${i.qty}</td><td>R$${i.price.toFixed(2)}</td><td>R$${sub.toFixed(2)}</td><td><button class="remove-btn" onclick="removeItem(${idx})">X</button></td>`;
+    tbody.appendChild(row);
   });
-  document.getElementById('total').textContent = 'R$' + total.toFixed(2);
+  document.getElementById('total').textContent='R$'+total.toFixed(2);
 }
-
+function removeItem(idx) {
+  const cart=JSON.parse(localStorage.getItem('carrinho')||'[]');
+  cart.splice(idx,1);
+  localStorage.setItem('carrinho',JSON.stringify(cart));
+  renderCarrinho();
+}
 function finalizarCompra() {
-  alert('Compra finalizada com sucesso!');
+  alert('Compra finalizada com sucesso! Total: R$'+document.getElementById('total').textContent.slice(2));
   localStorage.removeItem('carrinho');
   renderCarrinho();
   showSection('home');
 }
 </script>
-
-</body>
-</html>
